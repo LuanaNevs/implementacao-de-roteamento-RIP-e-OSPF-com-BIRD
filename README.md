@@ -175,3 +175,9 @@ Este script faz a cópia da configuração do protocolo desejado (OSPF ou RIP) p
 - [Video Simulação](https://drive.google.com/drive/folders/1GdOK8ik1i9xf2bh808aHjiZX8QxrpfpE?usp=drive_link)
 - [Resultados e Métricas](https://drive.google.com/drive/folders/1_GjNphvkBFNCWCebZhgsAJ2kV-DymHrc?usp=drive_link)
 
+## Autor
+
+- **Luana Lopes**  
+  Universidade do Vale do Rio dos Sinos - Unisinos  
+  Disciplina de Redes de Computadores - Internetworking, Roteamento e Transmissão
+
