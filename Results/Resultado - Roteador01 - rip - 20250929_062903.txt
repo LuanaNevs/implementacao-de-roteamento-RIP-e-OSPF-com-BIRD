@@ -1,0 +1,126 @@
+=== METRICAS COMPLETAS RIP ===
+Mon Sep 29 06:29:03 AM UTC 2025
+Roteador: Roteador01
+
+1. STATUS DO BIRD:
+BIRD 1.6.8 ready.
+BIRD 1.6.8
+Router ID is 192.168.12.1
+Current server time is 2025-09-29 06:29:03
+Last reboot on 2025-09-29 06:28:42
+Last reconfiguration on 2025-09-29 06:28:42
+Daemon is up and running
+
+2. PROTOCOLOS ATIVOS:
+BIRD 1.6.8 ready.
+name     proto    table    state  since       info
+kernel1  Kernel   master   up     06:28:42    
+  Preference:     10
+  Input filter:   ACCEPT
+  Output filter:  ACCEPT
+  Routes:         0 imported, 1 exported, 0 preferred
+  Route change stats:     received   rejected   filtered    ignored   accepted
+    Import updates:              0          0          0          0          0
+    Import withdraws:            0          0        ---          0          0
+    Export updates:              2          1          0        ---          1
+    Export withdraws:            0        ---        ---        ---          0
+
+device1  Device   master   up     06:28:42    
+  Preference:     240
+  Input filter:   ACCEPT
+  Output filter:  REJECT
+  Routes:         0 imported, 0 exported, 0 preferred
+  Route change stats:     received   rejected   filtered    ignored   accepted
+    Import updates:              0          0          0          0          0
+    Import withdraws:            0          0        ---          0          0
+    Export updates:              0          0          0        ---          0
+    Export withdraws:            0        ---        ---        ---          0
+
+direct1  Direct   master   up     06:28:42    
+  Preference:     240
+  Input filter:   ACCEPT
+  Output filter:  REJECT
+  Routes:         1 imported, 0 exported, 1 preferred
+  Route change stats:     received   rejected   filtered    ignored   accepted
+    Import updates:              1          0          0          0          1
+    Import withdraws:            0          0        ---          0          0
+    Export updates:              0          0          0        ---          0
+    Export withdraws:            0        ---        ---        ---          0
+
+rip1     RIP      master   up     06:28:42    
+  Preference:     120
+  Input filter:   ACCEPT
+  Output filter:  ACCEPT
+  Routes:         2 imported, 3 exported, 1 preferred
+  Route change stats:     received   rejected   filtered    ignored   accepted
+    Import updates:              2          0          0          0          2
+    Import withdraws:            0          0        ---          0          0
+    Export updates:              3          0          0        ---          3
+    Export withdraws:            0        ---        ---        ---          0
+
+
+3. VIZINHOS RIP:
+BIRD 1.6.8 ready.
+rip1:
+IP address                Interface  Metric Routes   Seen
+192.168.12.2              enp0s8          1      2     12
+
+4. ESTATISTICAS RIP:
+BIRD 1.6.8 ready.
+name     proto    table    state  since       info
+rip1     RIP      master   up     06:28:42    
+  Preference:     120
+  Input filter:   ACCEPT
+  Output filter:  ACCEPT
+  Routes:         2 imported, 3 exported, 1 preferred
+  Route change stats:     received   rejected   filtered    ignored   accepted
+    Import updates:              2          0          0          0          2
+    Import withdraws:            0          0        ---          0          0
+    Export updates:              3          0          0        ---          3
+    Export withdraws:            0        ---        ---        ---          0
+
+
+5. ROTAS RIP:
+BIRD 1.6.8 ready.
+192.168.12.0/24    via 192.168.12.2 on enp0s8 [rip1 06:28:42] (120/2)
+192.168.23.0/24    via 192.168.12.2 on enp0s8 [rip1 06:28:42] * (120/2)
+
+6. TABELA DE ROTAS COMPLETA:
+BIRD 1.6.8 ready.
+3 of 3 routes for 2 networks
+BIRD 1.6.8 ready.
+192.168.12.0/24    dev enp0s8 [direct1 06:28:42] * (240)
+                   via 192.168.12.2 on enp0s8 [rip1 06:28:42] (120/2)
+192.168.23.0/24    via 192.168.12.2 on enp0s8 [rip1 06:28:42] * (120/2)
+
+7. ESTATISTICAS DE REDE:
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    RX:  bytes packets errors dropped  missed   mcast           
+        617661    5780      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+        617661    5780      0       0       0       0 
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:0b:ac:11 brd ff:ff:ff:ff:ff:ff
+    RX:  bytes packets errors dropped  missed   mcast           
+      45655312   62399      0       0       0     190 
+    TX:  bytes packets errors dropped carrier collsns           
+       6825350   35914      0      15       0       0 
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:15:9e:09 brd ff:ff:ff:ff:ff:ff
+    RX:  bytes packets errors dropped  missed   mcast           
+       2427310   26740      0       0       0   10415 
+    TX:  bytes packets errors dropped carrier collsns           
+       2015750   21343      0      10       0       0 
+
+8. INFORMACOES DAS INTERFACES:
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:0b:ac:11 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+    inet6 fd17:625c:f037:2:b779:2f48:9dd2:2a69/64 scope global temporary dynamic 
+    inet6 fd17:625c:f037:2:4c30:d4b5:3d18:10cf/64 scope global temporary deprecated dynamic 
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:15:9e:09 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.12.1/24 brd 192.168.12.255 scope global noprefixroute enp0s8
+
+=== METRICAS RIP CONCLUIDAS ===

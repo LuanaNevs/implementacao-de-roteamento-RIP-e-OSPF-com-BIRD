@@ -1,0 +1,181 @@
+=== METRICAS COMPLETAS OSPF ===
+Mon Sep 29 06:23:16 AM UTC 2025
+Roteador: Roteador02
+
+1. STATUS DO BIRD:
+BIRD 1.6.8 ready.
+BIRD 1.6.8
+Router ID is 192.168.12.2
+Current server time is 2025-09-29 06:23:19
+Last reboot on 2025-09-29 04:20:01
+Last reconfiguration on 2025-09-29 04:20:01
+Daemon is up and running
+
+2. PROTOCOLOS ATIVOS:
+BIRD 1.6.8 ready.
+name     proto    table    state  since       info
+kernel1  Kernel   master   up     04:20:01    
+  Preference:     10
+  Input filter:   ACCEPT
+  Output filter:  ACCEPT
+  Routes:         0 imported, 0 exported, 0 preferred
+  Route change stats:     received   rejected   filtered    ignored   accepted
+    Import updates:              0          0          0          0          0
+    Import withdraws:            0          0        ---          0          0
+    Export updates:              2          2          0        ---          0
+    Export withdraws:            0        ---        ---        ---          0
+
+device1  Device   master   up     04:20:01    
+  Preference:     240
+  Input filter:   ACCEPT
+  Output filter:  REJECT
+  Routes:         0 imported, 0 exported, 0 preferred
+  Route change stats:     received   rejected   filtered    ignored   accepted
+    Import updates:              0          0          0          0          0
+    Import withdraws:            0          0        ---          0          0
+    Export updates:              0          0          0        ---          0
+    Export withdraws:            0        ---        ---        ---          0
+
+direct1  Direct   master   up     04:20:01    
+  Preference:     240
+  Input filter:   ACCEPT
+  Output filter:  REJECT
+  Routes:         2 imported, 0 exported, 2 preferred
+  Route change stats:     received   rejected   filtered    ignored   accepted
+    Import updates:              2          0          0          0          2
+    Import withdraws:            0          0        ---          0          0
+    Export updates:              0          0          0        ---          0
+    Export withdraws:            0        ---        ---        ---          0
+
+ospf1    OSPF     master   up     04:20:01    Running
+  Preference:     150
+  Input filter:   ACCEPT
+  Output filter:  ACCEPT
+  Routes:         2 imported, 4 exported, 0 preferred
+  Route change stats:     received   rejected   filtered    ignored   accepted
+    Import updates:              2          0          0          0          2
+    Import withdraws:            0          0        ---          0          0
+    Export updates:              4          0          0        ---          4
+    Export withdraws:            0        ---        ---        ---          0
+
+
+3. VIZINHOS OSPF:
+BIRD 1.6.8 ready.
+ospf1:
+Router ID   	Pri	     State     	DTime	Interface  Router IP   
+192.168.12.1	  1	Full/BDR  	00:39	enp0s8     192.168.12.1   
+192.168.23.3	  1	Full/BDR  	00:38	enp0s9     192.168.23.3   
+
+4. ESTADO OSPF:
+BIRD 1.6.8 ready.
+
+area 0.0.0.0
+
+	router 192.168.12.1
+		distance 10
+		network 192.168.12.0/24 metric 10
+		external 192.168.12.0/24 metric2 10000
+
+	router 192.168.12.2
+		distance 0
+		network 192.168.12.0/24 metric 10
+		network 192.168.23.0/24 metric 10
+		external 192.168.12.0/24 metric2 10000
+		external 192.168.23.0/24 metric2 10000
+
+	router 192.168.23.3
+		distance 10
+		network 192.168.23.0/24 metric 10
+		external 192.168.23.0/24 metric2 10000
+
+	network 192.168.12.0/24
+		dr 192.168.12.2
+		distance 10
+		router 192.168.12.2
+		router 192.168.12.1
+
+	network 192.168.23.0/24
+		dr 192.168.12.2
+		distance 10
+		router 192.168.12.2
+		router 192.168.23.3
+
+5. TOPOLOGIA OSPF:
+BIRD 1.6.8 ready.
+
+area 0.0.0.0
+
+	router 192.168.12.1
+		distance 10
+		network 192.168.12.0/24 metric 10
+
+	router 192.168.12.2
+		distance 0
+		network 192.168.12.0/24 metric 10
+		network 192.168.23.0/24 metric 10
+
+	router 192.168.23.3
+		distance 10
+		network 192.168.23.0/24 metric 10
+
+	network 192.168.12.0/24
+		dr 192.168.12.2
+		distance 10
+
+6. INTERFACES OSPF:
+BIRD 1.6.8 ready.
+syntax error
+
+7. ROTAS OSPF:
+BIRD 1.6.8 ready.
+192.168.12.0/24    dev enp0s8 [ospf1 04:20:01] I (150/10) [192.168.12.2]
+192.168.23.0/24    dev enp0s9 [ospf1 04:20:01] I (150/10) [192.168.12.2]
+
+8. TABELA DE ROTAS COMPLETA:
+BIRD 1.6.8 ready.
+4 of 4 routes for 2 networks
+BIRD 1.6.8 ready.
+192.168.12.0/24    dev enp0s8 [direct1 04:20:00] * (240)
+                   dev enp0s8 [ospf1 04:20:01] I (150/10) [192.168.12.2]
+192.168.23.0/24    dev enp0s9 [direct1 04:20:00] * (240)
+                   dev enp0s9 [ospf1 04:20:01] I (150/10) [192.168.12.2]
+
+9. ESTATISTICAS DE REDE:
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    RX:  bytes packets errors dropped  missed   mcast           
+        741509    6815      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+        741509    6815      0       0       0       0 
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:4b:25:2a brd ff:ff:ff:ff:ff:ff
+    RX:  bytes packets errors dropped  missed   mcast           
+      64867753   77660      0       0       0     188 
+    TX:  bytes packets errors dropped carrier collsns           
+       6719859   38221      0       0       0       0 
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:0e:0f:98 brd ff:ff:ff:ff:ff:ff
+    RX:  bytes packets errors dropped  missed   mcast           
+       2645995   29069      0       0       0   10476 
+    TX:  bytes packets errors dropped carrier collsns           
+       1790300   19038      0       0       0       0 
+4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:f5:e5:d6 brd ff:ff:ff:ff:ff:ff
+    RX:  bytes packets errors dropped  missed   mcast           
+       2744988   29723      0       0       0   10483 
+    TX:  bytes packets errors dropped carrier collsns           
+       2400407   25735      0       0       0       0 
+
+10. INFORMACOES DAS INTERFACES:
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:4b:25:2a brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic noprefixroute enp0s3
+    inet6 fd17:625c:f037:2:68d3:4ab4:7ce1:eec3/64 scope global temporary deprecated dynamic 
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:0e:0f:98 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.12.2/24 brd 192.168.12.255 scope global noprefixroute enp0s8
+4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:f5:e5:d6 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.23.2/24 brd 192.168.23.255 scope global noprefixroute enp0s9
+
+=== METRICAS CONCLUIDAS ===
